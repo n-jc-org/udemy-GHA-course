@@ -1,8 +1,23 @@
 name: Repo Events
 on: 
-    push: 
+    push:
+        branches:
+            - main
+            - "feature/*" # matches feature/featA, feature/featB
+            - "feature/**" # also matches feature/featA/featX
+            - "!feature/featX" # will exclude this branch 
+#        tags:
+#            - v1.* # match v1.1, 
+#            - "!v1.1.1" # excludes 
+#        paths:
+#            - "**.js"
+#            - "!app.js"
     pull_request: 
         types: [opened, assigned, reopened, synchronize]
+        branches:
+            - main
+        paths:
+            - "**.js"
     issues:
         types: [opened]
 
