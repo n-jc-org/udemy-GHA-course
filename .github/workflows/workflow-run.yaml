@@ -9,4 +9,4 @@ jobs:
     echo-string:
         runs-on: ununtu-latest
         steps:
-            - run: echo "I was triggered because 'Repo Events' was completed"
+            - run: echo "Hey, I was triggered because 'Repo Events' was completed"
