@@ -8,11 +8,17 @@ on:
                 type: string
                 required: true
                 default: "default value"
+            environment:
+                description: "Enviroment"
+                type: environment
+                required: true
 
 jobs:
     log-info:
         runs-on: ubuntu-latest
         steps:
             - run: echo $GITHUB_REF
-            - run:
+            - run: |
                 echo "String: ${{ inputs.string }}"
+                echo "Environment: ${{ inputs.environment }}"
+                
