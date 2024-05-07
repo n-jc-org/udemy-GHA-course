@@ -26,4 +26,9 @@ curl -L \
   -H "Authorization: Bearer <YOUR-TOKEN>" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
   https://api.github.com/repos/n-jc-org/udemy-GHA-course/dispatches \
-  -d '{"event_type":"build","client_payload":{"env":"production}}'
+  -d '{"event_type":"build","client_payload":{"env":"production"}}'
+
+
+for section 2:23
+
+https://crontab.guru/  # helper site for setting cron schedules
