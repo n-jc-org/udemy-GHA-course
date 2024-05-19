@@ -22,9 +22,10 @@ jobs:
             - name: Multiline ENV Var
               run: |
                 DELIMITER=KJHSDOI
-                echo "RANDOM_JOKE"<<$DELIMITER" >> "GITHUB_ENV"
-                echo "Here is a random joke:" >> "GITHUB_ENV"
-                curl -s https://icanhazdadjoke.com/ >> "GITHUB_ENV"
+                echo "RANDOM_JOKE<<$DELIMITER" >> "$GITHUB_ENV"
+                echo "Here is a random joke:" >> "$GITHUB_ENV"
+                curl -s https://icanhazdadjoke.com/ >> "$GITHUB_ENV"
+                echo "" >> "$GITHUB_ENV"
                 echo "$DELIMITER" >> "$GITHUB_ENV"
             - name: Log Custom ENV Vars
               env:
@@ -36,3 +37,4 @@ jobs:
                 echo $WF_LEVEL_ENV
                 echo $JOB_LEVEL_ENV
                 echo $NEW_ENV_VAR
+                echo $RANDOM_JOKE
