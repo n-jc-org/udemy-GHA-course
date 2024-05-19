@@ -23,5 +23,7 @@ jobs:
               run: echo 'Rund on cancelled'  
     job-2:
         runs-on: ubuntu-latest
-        name: job-1
-        if: failure()
+        steps:
+            - name: job-1
+              if: failure()
+              run: echo 'Job 2 runs becuase job 1 failed'
