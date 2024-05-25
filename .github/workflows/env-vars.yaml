@@ -27,7 +27,6 @@ jobs:
                 curl -s https://icanhazdadjoke.com/ >> "$GITHUB_ENV"
                 echo "" >> "$GITHUB_ENV"
                 echo "$DELIMITER" >> "$GITHUB_ENV"
-                steps:
             - name: Multiline ENV Var 2
               run: |
                 {
@@ -36,7 +35,6 @@ jobs:
                     curl -s https://icanhazdadjoke.com/
                     echo EOF
                 } >> "$GITHUB_ENV"
-                  
             - name: Log Custom ENV Vars
               env:
                 STEP_LEVEL_ENV: Only available to this step
