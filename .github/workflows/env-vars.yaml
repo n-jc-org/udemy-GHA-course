@@ -28,11 +28,12 @@ jobs:
 #                echo "" >> "$GITHUB_ENV"
 #                echo "$DELIMITER" >> "$GITHUB_ENV"
             - name: Multiline ENV Var 2
+              id: step_one
               run: |
                 {
                     echo 'JSON_RESPONSE<<EOF'
                     echo "Here is another random joke:"
-                    curl -s https://icanhazdadjoke.com/
+                    curl https://icanhazdadjoke.com/
                     echo EOF
                 } >> "$GITHUB_ENV"
             - name: Log Custom ENV Vars
