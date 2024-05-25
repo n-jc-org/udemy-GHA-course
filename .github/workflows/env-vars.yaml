@@ -30,12 +30,11 @@ jobs:
             - name: Multiline ENV Var 2
               id: step_one
               run: |
-                {
-                    echo 'JSON_RESPONSE<<EOF'
-                    echo "Here is another random joke:"
-                    curl https://icanhazdadjoke.com/
-                    echo EOF
-                } >> "$GITHUB_ENV"
+                EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+                echo "JSON_RESPONSE<<$EOF" >> $GITHUB_ENV
+                echo "Here is another random joke:" >> $GITHUB_ENV
+                curl -s https://icanhazdadjoke.com/ >> $GITHUB_ENV
+                echo "$EOF" >> $GITHUB_ENV
             - name: Log Custom ENV Vars
               env:
                 STEP_LEVEL_ENV: Only available to this step
