@@ -17,9 +17,11 @@ on:
 jobs:
     prepare-matrix:
       runs-on: ubuntu-latest
+      # set output of this job so its available for other jobs
       outputs:
         matrix-arrays: ${{ steps.matrix-arrays.outputs.result }}
       steps:
+        # uses javascript to split a comma delimited string into an array
         - uses: actions/github-script@v6
           id: matrix-arrays
           with:
