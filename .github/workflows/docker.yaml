@@ -1,0 +1,27 @@
+name: Docker
+on: [workflow_dispatch]
+
+jobs:
+    docker-job:
+        runs-on: ubuntu-latest
+        # pulls from docker hub - https://hub.docker.com/_/node
+        # select an up-to-date image tag
+        container: 
+            image: node:22-alpine3.19
+        env:
+            API_URL: some-url.com
+
+        #ports:
+        #    - 80
+#        volumes:
+#    - vol_name:/path/in/container
+#            - /path/to/container
+#            - /path/in/host
+                
+        steps:
+            - name: Log Node & OS Versions
+              run: |
+                node -v
+                cat /etc/os-release
+            - name: Log Env
+              run: echo $API_URL
