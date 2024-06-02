@@ -18,6 +18,7 @@ jobs:
 
   calling-a-resusable-wf-in-the-same-repo:
     uses: ./.github/workflows/reusable-workflow.yaml
+    # need to send secrets onward for nested workflows
     secrets: inherit
 
   using-reusable-wf-output:
