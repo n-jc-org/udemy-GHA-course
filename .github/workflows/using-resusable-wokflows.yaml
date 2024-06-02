@@ -1,18 +1,26 @@
-name: Calling reusable workflows
-
+name: Calling Reusable Workflows
 on:
-    workflow_dispatch:
-        inputs:
-            name:
-                description: "input description"
-                type: string
-                default: "Ali"
-                required: false
-
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Input description"
+        type: string
+        default: "Ali"
+        required: false
 jobs:
-    calling-a-resuable-wf:
-        uses: n-jc-org/udemy-GHA-course-2/.github/workflows/reusable.yaml@main
-        with:
-            name: ${{ inputs.name }}
-        secrets:
-            access-token: ${{ secrets.ACCESS_TOKEN}}
+  calling-a-reusable-wf:
+    #uses: github-actions-course/workflows/.github/workflows/reusable.yaml@main
+    uses: n-jc-org/udemy-GHA-course-2/.github/workflows/reusable.yaml@main
+    with:
+      name: ${{ inputs.name }}
+    secrets:
+      access-token: ${{ secrets.ACCESS_TOKEN }}
+
+  calling-a-resusable-wf-in-the-same-repo:
+    uses: ./.github/workflows/reusable-workflow.yaml
+    #uses: ./reusable-workflow.yaml
+  using-reusable-wf-output:
+    runs-on: ubuntu-latest
+    needs: calling-a-resusable-wf-in-the-same-repo
+    steps:
+        - run: echo ${{ needs.calling-a-resusable-wf-in-the-same-repo.outputs.date }}
