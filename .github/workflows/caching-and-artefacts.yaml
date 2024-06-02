@@ -5,14 +5,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v3
-        - name: cahce node modules
+
+        # use a standard action to cache npm dependencies 
+        - name: cache node modules
           id: cache-dependencies
           uses: actions/cache@v3
           with:
             path: ~/.npm
-            key: "npm-cache"
+            key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-npm-cache-
+
+        # display the cache output 
         - name: Display cache output
           run: echo '${{ toJson(steps.cache-dependencies.outputs) }}'
+
+        # install npm dependencies 
         - name: Install dependencies
           run: npm install
         - name: Use Axios
