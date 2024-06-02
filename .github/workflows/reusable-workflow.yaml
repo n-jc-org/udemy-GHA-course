@@ -3,7 +3,7 @@ on:
   workflow_call:
     outputs:
         date: 
-            description: 'date value'
+            description: "date value"
             value: ${{ jobs.generate-output.outputs.date }}
 
 jobs:
@@ -12,5 +12,5 @@ jobs:
     outputs:
         date: ${{ steps.date-step.outputs.date }}
     steps:
-        - run: echo "date=$(date)" >> $ GITHUB_OUTPUT
+        - run: echo "date=$(date)" >> $GITHUB_OUTPUT
           id: date-step
