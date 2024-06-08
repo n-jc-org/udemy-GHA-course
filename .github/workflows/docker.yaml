@@ -25,3 +25,17 @@ jobs:
                 cat /etc/os-release
             - name: Log Env
               run: echo $API_URL
+
+            - name: Container in a Step
+              uses: docker://node:20.14-alpine3.19
+              with:
+                # overwrites ENTRYPOINT in Dockerfile
+                entrypoint: /usr/local/bin/node
+                # overwrites CMD in Dockerfile
+                args: -p 2+3
+
+            - name: Log node version
+              uses: docker://node:20.14-alpine3.19
+              with:
+                # overwrites CMD in Dockerfile
+                args: -v
