@@ -42,8 +42,17 @@ jobs:
                 # overwrites CMD in Dockerfile
                 args: -v
                 
+            # each container uses the same volume as main runner
+            # so therefore can access the same files etc. 
             - name: show file contents
               uses: docker://node:18.20-alpine3.19
               with:
                 entrypoint: cat
                 args: text.txt
+
+            - uses: actions/checkout@v3
+            - name: run a bash script
+              uses: docker://node:18.20-alpine3.19
+              with:
+                entrypoint: ./script.sh
+                args: "some string"
