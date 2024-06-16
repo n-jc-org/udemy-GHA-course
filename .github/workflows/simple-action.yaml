@@ -8,7 +8,11 @@ jobs:
             - uses: actions/checkout@v3
             - name: Simple JS Action
               id: greet
-              uses: ./.github/actions/hello
+              # Docker action version
+              uses: ./.github/actions/hello-docker
+              # Javascript action version
+              # uses: ./.github/actions/hello
+              # marketplace action
               #uses: actions/hello-world-javascript-action@v1
               with: 
                 who_to_greet: Nathan
